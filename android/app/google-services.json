@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "189702422957",
+    "project_id": "booking-firebase-57d85",
+    "storage_bucket": "booking-firebase-57d85.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:189702422957:android:1dc550843de45c44952124",
+        "android_client_info": {
+          "package_name": "com.newuber"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbxMFWumN-QRloWBrKHV0WnLd7XUmkgX4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
