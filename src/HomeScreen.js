@@ -189,7 +189,7 @@ const HomeScreen = ({navigation}) => {
         </Text>
       </TouchableOpacity>
       <GoogleSigninButton
-        style={{width: 192, height: 48}}
+        style={{width: 192, height: 48, marginTop: 20}}
         size={GoogleSigninButton.Size.Wide}
         color={GoogleSigninButton.Color.Dark}
         // onPress={this._signIn}
@@ -204,10 +204,15 @@ const HomeScreen = ({navigation}) => {
             })
         }
       />
-      <View>
+      <View style={{marginTop: 15}}>
         {!loggedIn && <Text>You are currently logged out</Text>}
         {loggedIn && (
-          <Button onPress={() => signOut()} title="LogOut" color="red"></Button>
+          <Button
+            onPress={() => signOut()}
+            title="Sign Out"
+            color="#841584"
+            accessibilityLabel="Learn more about this purple button"
+          />
         )}
       </View>
     </View>
