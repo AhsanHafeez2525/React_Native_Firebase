@@ -266,6 +266,8 @@ dependencies {
 
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
     implementation 'com.facebook.android:facebook-android-sdk:12.1.0'
+    implementation 'com.facebook.android:facebook-android-sdk:latest.release'
+    implementation project(':react-native-fbsdk-next')
 
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {
         exclude group:'com.facebook.fbjni'
