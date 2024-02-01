@@ -25,8 +25,6 @@ const HomeScreen = ({navigation}) => {
   const [password, setPassword] = useState('');
   const [userSign, setUserSign] = useState(null);
 
-  // free code camp google sign
-
   const [loggedIn, setloggedIn] = useState(false);
   const [userInfo, setuserInfo] = useState([]);
   const [userData, setUserData] = useState({});
