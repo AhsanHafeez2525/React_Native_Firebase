@@ -77,6 +77,7 @@ const HomeScreen = ({navigation}) => {
       console.log('User Info:', user);
       console.log('Access Token:', accessToken);
       console.log('ID Token:', idToken);
+      navigation.navigate('ChatScreen');
     } catch (error) {
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
         // user cancelled the login flow
@@ -234,17 +235,16 @@ const HomeScreen = ({navigation}) => {
         style={{width: 192, height: 48, marginTop: 20}}
         size={GoogleSigninButton.Size.Wide}
         color={GoogleSigninButton.Color.Dark}
-        // onPress={this._signIn}
-        onPress={() =>
-          signIn()
-            .then(() => {
-              navigation.navigate('ChatScreen');
-              console.log('User signed in using Google');
-            })
-            .catch(error => {
-              console.log(error);
-            })
-        }
+        onPress={signIn}
+        // onPress={() =>
+        //   signIn()
+        //     .then(() => {
+        //       console.log('User signed in using Google');
+        //     })
+        //     .catch(error => {
+        //       console.log(error);
+        //     })
+        // }
       />
       <View style={{marginTop: 15}}>
         {!loggedIn && <Text>You are currently logged out</Text>}
