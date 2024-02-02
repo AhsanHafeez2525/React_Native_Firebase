@@ -236,15 +236,6 @@ const HomeScreen = ({navigation}) => {
         size={GoogleSigninButton.Size.Wide}
         color={GoogleSigninButton.Color.Dark}
         onPress={signIn}
-        // onPress={() =>
-        //   signIn()
-        //     .then(() => {
-        //       console.log('User signed in using Google');
-        //     })
-        //     .catch(error => {
-        //       console.log(error);
-        //     })
-        // }
       />
       <View style={{marginTop: 15}}>
         {!loggedIn && <Text>You are currently logged out</Text>}
