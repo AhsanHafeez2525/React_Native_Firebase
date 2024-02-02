@@ -16,6 +16,7 @@ import {
   statusCodes,
 } from '@react-native-google-signin/google-signin';
 import {LoginManager, AccessToken, Settings} from 'react-native-fbsdk-next';
+import {NotificationServices, requestUserPermission} from './PushNotification';
 
 Settings.initializeSDK();
 Settings.setAppID('281964017953662');
@@ -143,6 +144,11 @@ const HomeScreen = ({navigation}) => {
         console.error(error);
       });
   };
+
+  useEffect(() => {
+    requestUserPermission();
+    NotificationServices();
+  }, []);
 
   return (
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
