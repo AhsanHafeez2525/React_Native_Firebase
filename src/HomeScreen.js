@@ -17,6 +17,7 @@ import {
 } from '@react-native-google-signin/google-signin';
 import {LoginManager, AccessToken, Settings} from 'react-native-fbsdk-next';
 import {NotificationServices, requestUserPermission} from './PushNotification';
+import ForegroundHandler from './ForegroundHandler';
 
 Settings.initializeSDK();
 Settings.setAppID('281964017953662');
@@ -283,6 +284,7 @@ const HomeScreen = ({navigation}) => {
           <Text style={styles.btnTitle}>Facebook Logout</Text>
         </Pressable>
       </View>
+      <ForegroundHandler />
     </View>
   );
 };

@@ -42,10 +42,10 @@ export const NotificationServices = () => {
 
   // foreground message
 
-  messaging().onMessage(async remoteMessage => {
-    console.log('Notification is foreground', remoteMessage);
-    handleNotification(remoteMessage);
-  });
+  // messaging().onMessage(async remoteMessage => {
+  //   console.log('Notification is foreground', remoteMessage);
+  //   handleNotification(remoteMessage);
+  // });
 
   messaging()
     .getInitialNotification()
