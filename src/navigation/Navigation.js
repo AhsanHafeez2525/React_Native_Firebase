@@ -5,6 +5,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import HomeScreen from '../HomeScreen';
 import ChatScreen from '../ChatScreen';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
+import MapScreen from '../MapScreen';
 
 const Navigation = () => {
   const Stack = createNativeStackNavigator();
@@ -23,6 +24,13 @@ const Navigation = () => {
           <Stack.Screen
             name="ChatScreen"
             component={ChatScreen}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="MapScreen"
+            component={MapScreen}
             options={{
               headerShown: false,
             }}

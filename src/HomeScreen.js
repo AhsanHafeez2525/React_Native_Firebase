@@ -8,6 +8,7 @@ import {
   Image,
   Button,
   Pressable,
+  ScrollView,
 } from 'react-native';
 import auth from '@react-native-firebase/auth';
 import {
@@ -152,140 +153,164 @@ const HomeScreen = ({navigation}) => {
   }, []);
 
   return (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <Image
-        source={require('.././Images/Firenow.jpg')}
-        style={styles.FireImage}
-      />
-      <TextInput
-        placeholder="Enter a email"
-        value={email}
-        onChangeText={text => setEmail(text)}
-        style={{
-          width: '90%',
-          borderWidth: 1,
-          borderColor: 'grey',
-          borderRadius: 8,
-          paddingLeft: 20,
-        }}
-      />
-      <TextInput
-        placeholder="Enter a password"
-        value={password}
-        onChangeText={text => setPassword(text)}
-        style={{
-          width: '90%',
-          borderWidth: 1,
-          borderColor: 'grey',
-          borderRadius: 8,
-          marginTop: 15,
-          paddingLeft: 20,
-        }}
-      />
-      <TouchableOpacity
-        style={{
-          width: 250,
-          height: 45,
-          alignSelf: 'center',
-          backgroundColor: 'black',
-          borderRadius: 8,
-          marginTop: 20,
-        }}
-        onPress={() => createUser()}>
-        <Text
-          style={{textAlign: 'center', paddingVertical: 11, color: 'white'}}>
-          Create an Account
-        </Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        style={{
-          width: 250,
-          height: 45,
-          alignSelf: 'center',
-          backgroundColor: 'black',
-          borderRadius: 8,
-          marginTop: 20,
-        }}
-        onPress={() => userSignIn()}>
-        <Text
-          style={{textAlign: 'center', paddingVertical: 11, color: 'white'}}>
-          Sign In
-        </Text>
-      </TouchableOpacity>
-
-      {userSign != null && <Text>{userSign.user.name}</Text>}
-      {userSign != null && <Text>{userSign.user.email}</Text>}
-      {userSign != null && (
+    <ScrollView>
+      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
         <Image
-          source={{uri: userSign.user.photo}}
-          style={{width: 100, height: 100}}
+          source={require('.././Images/Firenow.jpg')}
+          style={styles.FireImage}
         />
-      )}
+        <TextInput
+          placeholder="Enter a email"
+          value={email}
+          onChangeText={text => setEmail(text)}
+          style={{
+            width: '90%',
+            borderWidth: 1,
+            borderColor: 'grey',
+            borderRadius: 8,
+            paddingLeft: 20,
+          }}
+        />
+        <TextInput
+          placeholder="Enter a password"
+          value={password}
+          onChangeText={text => setPassword(text)}
+          style={{
+            width: '90%',
+            borderWidth: 1,
+            borderColor: 'grey',
+            borderRadius: 8,
+            marginTop: 15,
+            paddingLeft: 20,
+          }}
+        />
+        <TouchableOpacity
+          style={{
+            width: 250,
+            height: 45,
+            alignSelf: 'center',
+            backgroundColor: 'black',
+            borderRadius: 8,
+            marginTop: 20,
+          }}
+          onPress={() => createUser()}>
+          <Text
+            style={{textAlign: 'center', paddingVertical: 11, color: 'white'}}>
+            Create an Account
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={{
+            width: 250,
+            height: 45,
+            alignSelf: 'center',
+            backgroundColor: 'black',
+            borderRadius: 8,
+            marginTop: 20,
+          }}
+          onPress={() => userSignIn()}>
+          <Text
+            style={{textAlign: 'center', paddingVertical: 11, color: 'white'}}>
+            Sign In
+          </Text>
+        </TouchableOpacity>
 
-      <TouchableOpacity
-        style={{
-          width: 250,
-          height: 45,
-          alignSelf: 'center',
-          backgroundColor: 'black',
-          borderRadius: 8,
-          marginTop: 20,
-        }}
-        //   onPress={() => signOut()}
-      >
-        <Text
-          style={{textAlign: 'center', paddingVertical: 11, color: 'white'}}>
-          Sign Out
-        </Text>
-      </TouchableOpacity>
-      <GoogleSigninButton
-        style={{width: 192, height: 48, marginTop: 20}}
-        size={GoogleSigninButton.Size.Wide}
-        color={GoogleSigninButton.Color.Dark}
-        onPress={signIn}
-      />
-      <View style={{marginTop: 15}}>
-        {!loggedIn && <Text>You are currently logged out</Text>}
-        {loggedIn && (
-          <Button
-            onPress={() => signOut()}
-            title="Sign Out"
-            color="#841584"
-            accessibilityLabel="Learn more about this purple button"
+        {userSign != null && <Text>{userSign.user.name}</Text>}
+        {userSign != null && <Text>{userSign.user.email}</Text>}
+        {userSign != null && (
+          <Image
+            source={{uri: userSign.user.photo}}
+            style={{width: 100, height: 100}}
           />
         )}
-      </View>
-      <View style={styles.container}>
-        <Text style={styles.title}>Facebook Login</Text>
-        <View>
-          <Text>
-            UID: <Text style={styles.title}>{userData?.uid}</Text>
+
+        <TouchableOpacity
+          style={{
+            width: 250,
+            height: 45,
+            alignSelf: 'center',
+            backgroundColor: 'black',
+            borderRadius: 8,
+            marginTop: 20,
+          }}
+          //   onPress={() => signOut()}
+        >
+          <Text
+            style={{textAlign: 'center', paddingVertical: 11, color: 'white'}}>
+            Sign Out
           </Text>
-          <Text>
-            Email: <Text style={styles.title}>{userData?.email}</Text>
-          </Text>
-          <Text>
-            User Name: <Text style={styles.title}>{userData?.displayName}</Text>
-          </Text>
+        </TouchableOpacity>
+        <GoogleSigninButton
+          style={{width: 192, height: 48, marginTop: 20}}
+          size={GoogleSigninButton.Size.Wide}
+          color={GoogleSigninButton.Color.Dark}
+          onPress={signIn}
+        />
+        <View style={{marginTop: 15}}>
+          {!loggedIn && <Text>You are currently logged out</Text>}
+          {loggedIn && (
+            <Button
+              onPress={() => signOut()}
+              title="Sign Out"
+              color="#841584"
+              accessibilityLabel="Learn more about this purple button"
+            />
+          )}
         </View>
-        <Pressable
-          onPress={() =>
-            facebookLogin()
-              .then(res => {
-                console.log(res);
-                setUserData(res.user);
-              })
-              .catch(error => console.log(error))
-          }
-          style={styles.fbBtn}>
-          <Text style={styles.btnTitle}>Facebook Login</Text>
-        </Pressable>
-        <Pressable onPress={facebookLogout} style={styles.fbBtn}>
-          <Text style={styles.btnTitle}>Facebook Logout</Text>
-        </Pressable>
+        <View style={styles.container}>
+          <Text style={styles.title}>Facebook Login</Text>
+          <View>
+            <Text>
+              UID: <Text style={styles.title}>{userData?.uid}</Text>
+            </Text>
+            <Text>
+              Email: <Text style={styles.title}>{userData?.email}</Text>
+            </Text>
+            <Text>
+              User Name:{' '}
+              <Text style={styles.title}>{userData?.displayName}</Text>
+            </Text>
+          </View>
+          <Pressable
+            onPress={() =>
+              facebookLogin()
+                .then(res => {
+                  console.log(res);
+                  setUserData(res.user);
+                })
+                .catch(error => console.log(error))
+            }
+            style={styles.fbBtn}>
+            <Text style={styles.btnTitle}>Facebook Login</Text>
+          </Pressable>
+          <Pressable onPress={facebookLogout} style={styles.fbBtn}>
+            <Text style={styles.btnTitle}>Facebook Logout</Text>
+          </Pressable>
+        </View>
+        <ForegroundHandler />
+        <View>
+          <TouchableOpacity
+            style={{
+              width: 250,
+              height: 45,
+              alignSelf: 'center',
+              backgroundColor: 'black',
+              borderRadius: 8,
+              marginTop: 20,
+            }}
+            onPress={() => navigation.navigate('MapScreen')}>
+            <Text
+              style={{
+                textAlign: 'center',
+                paddingVertical: 11,
+                color: 'white',
+              }}>
+              Go to google maps
+            </Text>
+          </TouchableOpacity>
+        </View>
       </View>
-      <ForegroundHandler />
-    </View>
+    </ScrollView>
   );
 };
 
