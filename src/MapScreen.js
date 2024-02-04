@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useRef, useState} from 'react';
 import {StyleSheet, Text, View, Image} from 'react-native';
 import MapView, {
   Marker,
@@ -7,8 +7,11 @@ import MapView, {
   Polyline,
   Polygon,
 } from 'react-native-maps';
+import {GooglePlacesAutocomplete} from 'react-native-google-places-autocomplete';
+import {GOOGLE_MAPS_API_KEY} from './config/constants';
 
 const MapScreen = () => {
+  const mapRef = useRef(null);
   const [markersList, setMarkersList] = useState([
     {
       id: 1,
@@ -35,10 +38,38 @@ const MapScreen = () => {
     </View>
   );
 
+  async function moveToLocation(latitude, longitude) {
+    mapRef.current.animateToRegion({
+      latitude,
+      longitude,
+      latitudeDelta: 0.015,
+      longitudeDelta: 0.015,
+    });
+  }
+
   return (
     <View style={{flex: 1}}>
+      <View style={{zIndex: 1, flex: 0.5}}>
+        <GooglePlacesAutocomplete
+          fetchDetails={true}
+          placeholder="Search"
+          onPress={(data, details = null) => {
+            // 'details' is provided when fetchDetails = true
+            console.log(JSON.stringify(data));
+            console.log(JSON.stringify(details?.geometry?.location));
+
+            console.log(data, details);
+          }}
+          query={{
+            key: GOOGLE_MAPS_API_KEY,
+            language: 'en',
+          }}
+          onFail={error => console.log(error)}
+        />
+      </View>
       <MapView
-        style={{flex: 1}}
+        ref={mapRef}
+        style={{flex: 1, zIndex: 0}}
         initialRegion={{
           latitude: 33.62571806303041,
           longitude: 73.11862946994432,
