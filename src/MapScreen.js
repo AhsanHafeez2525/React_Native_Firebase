@@ -55,8 +55,11 @@ const MapScreen = () => {
           placeholder="Search"
           onPress={(data, details = null) => {
             // 'details' is provided when fetchDetails = true
-            console.log(JSON.stringify(data));
             console.log(JSON.stringify(details?.geometry?.location));
+            moveToLocation(
+              details?.geometry?.location.lat,
+              details?.geometry?.location.lng,
+            );
 
             console.log(data, details);
           }}

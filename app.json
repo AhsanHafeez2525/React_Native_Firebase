@@ -1,4 +1,7 @@
 {
   "name": "NewUber",
-  "displayName": "NewUber"
+  "displayName": "NewUber",
+  "react-native-google-mobile-ads": {
+    "android_app_id": "ca-app-pub-6481891351897374~2194448685"
+  }
 }
