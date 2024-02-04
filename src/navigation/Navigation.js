@@ -7,6 +7,8 @@ import ChatScreen from '../ChatScreen';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import MapScreen from '../MapScreen';
 import AdmobsScreen from '../AdmobsScreen';
+import DynamicScreenA from '../DynamicScreenA';
+import ProductDetail from '../ProductDetail';
 
 const Navigation = () => {
   const Stack = createNativeStackNavigator();
@@ -39,6 +41,20 @@ const Navigation = () => {
           <Stack.Screen
             name="AdmobsScreen"
             component={AdmobsScreen}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="DynamicScreenA"
+            component={DynamicScreenA}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="ProductDetail"
+            component={ProductDetail}
             options={{
               headerShown: false,
             }}
