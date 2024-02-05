@@ -9,6 +9,7 @@ import MapScreen from '../MapScreen';
 import AdmobsScreen from '../AdmobsScreen';
 import DynamicScreenA from '../DynamicScreenA';
 import ProductDetail from '../ProductDetail';
+import ColorMode from '../ColorMode';
 
 const Navigation = () => {
   const Stack = createNativeStackNavigator();
@@ -55,6 +56,13 @@ const Navigation = () => {
           <Stack.Screen
             name="ProductDetail"
             component={ProductDetail}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="ColorMode"
+            component={ColorMode}
             options={{
               headerShown: false,
             }}
