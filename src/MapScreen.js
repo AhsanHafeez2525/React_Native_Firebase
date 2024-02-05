@@ -1,5 +1,5 @@
 import React, {useRef, useState} from 'react';
-import {StyleSheet, Text, View, Image} from 'react-native';
+import {StyleSheet, Text, View, Image, Alert} from 'react-native';
 import MapView, {
   Marker,
   Callout,
@@ -9,11 +9,35 @@ import MapView, {
 } from 'react-native-maps';
 import {GooglePlacesAutocomplete} from 'react-native-google-places-autocomplete';
 import {GOOGLE_MAPS_API_KEY} from './config/constants';
+import * as geolib from 'geolib';
+
+let myPolygon = [
+  {
+    latitude: 33.56637789396995,
+    longitude: 73.12917163558515,
+  },
+
+  {
+    latitude: 33.55318077999257,
+    longitude: 73.12516617261652,
+  },
+
+  {
+    latitude: 33.5393139356739,
+    longitude: 73.18617247312305,
+  },
+
+  {
+    latitude: 33.565196911151396,
+    longitude: 73.16947276905294,
+  },
+];
 
 const MapScreen = () => {
   const mapRef = useRef(null);
   const [origin, setOrigin] = useState();
   const [destination, setDestination] = useState();
+  const [marker, setMarker] = useState();
   const [markersList, setMarkersList] = useState([
     {
       id: 1,
@@ -49,6 +73,24 @@ const MapScreen = () => {
     });
   }
 
+  function locationLiesInsidePolygon(coordinates) {
+    let bol = geolib.isPointInPolygon(coordinates, myPolygon);
+    console.log('_locationLiesInsidePolygon', bol);
+    let msg = '';
+    if (bol) {
+      msg = 'coordinates exist inside polygon';
+    } else {
+      msg = 'coordinates exist outside polygon';
+    }
+    Alert.alert('Gep fancing', msg, [
+      {
+        text: 'Cancel',
+        onPress: () => console.log('Cancel Pressed'),
+        style: 'cancel',
+      },
+      {text: 'OK', onPress: () => console.log('OK Presed')},
+    ]);
+  }
   return (
     <View style={{flex: 1}}>
       <View
@@ -116,6 +158,11 @@ const MapScreen = () => {
       </View>
       <MapView
         ref={mapRef}
+        onPress={e => {
+          console.log(e.nativeEvent.coordinate);
+          setMarker(e.nativeEvent.coordinate);
+          locationLiesInsidePolygon(e.nativeEvent.coordinate);
+        }}
         style={{flex: 1, zIndex: 0}}
         initialRegion={{
           latitude: 33.62571806303041,
@@ -123,6 +170,7 @@ const MapScreen = () => {
           latitudeDelta: 0.1,
           longitudeDelta: 0.1,
         }}>
+        {marker !== undefined ? <Marker coordinate={marker}></Marker> : null}
         {origin !== undefined ? <Marker coordinate={origin}></Marker> : null}
         {destination !== undefined ? (
           <Marker coordinate={destination}></Marker>
@@ -195,27 +243,7 @@ const MapScreen = () => {
           strokeWidth={2}
           strokeColor="red"
           fillColor="#EBF5FB"
-          coordinates={[
-            {
-              latitude: 33.56637789396995,
-              longitude: 73.12917163558515,
-            },
-
-            {
-              latitude: 33.55318077999257,
-              longitude: 73.12516617261652,
-            },
-
-            {
-              latitude: 33.5393139356739,
-              longitude: 73.18617247312305,
-            },
-
-            {
-              latitude: 33.565196911151396,
-              longitude: 73.16947276905294,
-            },
-          ]}
+          coordinates={myPolygon}
         />
         {origin != undefined && destination != undefined ? (
           <MapViewDirections
