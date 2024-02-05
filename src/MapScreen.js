@@ -38,6 +38,7 @@ const MapScreen = () => {
   const [origin, setOrigin] = useState();
   const [destination, setDestination] = useState();
   const [marker, setMarker] = useState();
+  const [permissionGranted, setPermissionGranted] = useState(false);
   const [markersList, setMarkersList] = useState([
     {
       id: 1,
