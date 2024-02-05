@@ -364,6 +364,28 @@ const HomeScreen = ({navigation}) => {
               borderRadius: 8,
               marginTop: 20,
             }}
+            onPress={() => navigation.navigate('AnimatedPlaceholder')}>
+            <Text
+              style={{
+                textAlign: 'center',
+                paddingVertical: 11,
+                color: 'white',
+              }}>
+              Go to Animated Placeholder
+            </Text>
+          </TouchableOpacity>
+        </View>
+
+        <View>
+          <TouchableOpacity
+            style={{
+              width: 250,
+              height: 45,
+              alignSelf: 'center',
+              backgroundColor: 'black',
+              borderRadius: 8,
+              marginTop: 20,
+            }}
             onPress={() => navigation.navigate('DynamicScreenA')}>
             <Text
               style={{

@@ -10,6 +10,7 @@ import AdmobsScreen from '../AdmobsScreen';
 import DynamicScreenA from '../DynamicScreenA';
 import ProductDetail from '../ProductDetail';
 import ColorMode from '../ColorMode';
+import AnimatedPlaceholder from '../AnimatedPlaceholder';
 
 const Navigation = () => {
   const Stack = createNativeStackNavigator();
@@ -63,6 +64,13 @@ const Navigation = () => {
           <Stack.Screen
             name="ColorMode"
             component={ColorMode}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="AnimatedPlaceholder"
+            component={AnimatedPlaceholder}
             options={{
               headerShown: false,
             }}
