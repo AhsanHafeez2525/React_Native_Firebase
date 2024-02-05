@@ -12,7 +12,20 @@
           "package_name": "com.newuber"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "189702422957-sgj8do3jlidspp3v3eh3flra7jfh52hh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.newuber",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "189702422957-0sk2egktjddnelchk88n1mcejhm18bib.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyBbxMFWumN-QRloWBrKHV0WnLd7XUmkgX4"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "189702422957-0sk2egktjddnelchk88n1mcejhm18bib.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

@@ -12,6 +12,8 @@ import {GOOGLE_MAPS_API_KEY} from './config/constants';
 
 const MapScreen = () => {
   const mapRef = useRef(null);
+  const [origin, setOrigin] = useState();
+  const [destination, setDestination] = useState();
   const [markersList, setMarkersList] = useState([
     {
       id: 1,
@@ -49,26 +51,68 @@ const MapScreen = () => {
 
   return (
     <View style={{flex: 1}}>
-      <View style={{zIndex: 1, flex: 0.5}}>
-        <GooglePlacesAutocomplete
-          fetchDetails={true}
-          placeholder="Search"
-          onPress={(data, details = null) => {
-            // 'details' is provided when fetchDetails = true
-            console.log(JSON.stringify(details?.geometry?.location));
-            moveToLocation(
-              details?.geometry?.location.lat,
-              details?.geometry?.location.lng,
-            );
+      <View
+        style={{
+          zIndex: 1,
+          flex: 0.5,
+          flexDirection: 'row',
+          marginHorizontal: 10,
+          marginVertical: 5,
+        }}>
+        <View style={{flex: 0.5}}>
+          <GooglePlacesAutocomplete
+            fetchDetails={true}
+            placeholder="Origin"
+            onPress={(data, details = null) => {
+              // 'details' is provided when fetchDetails = true
+              console.log(JSON.stringify(details?.geometry?.location));
+              let originCoordinates = {
+                latitude: details?.geometry?.location.lat,
+                longitude: details?.geometry?.location.lng,
+              };
+              setOrigin(originCoordinates);
+              moveToLocation(
+                // details?.geometry?.location.lat,
+                // details?.geometry?.location.lng,
+                originCoordinates,
+              );
 
-            console.log(data, details);
-          }}
-          query={{
-            key: GOOGLE_MAPS_API_KEY,
-            language: 'en',
-          }}
-          onFail={error => console.log(error)}
-        />
+              console.log(data, details);
+            }}
+            query={{
+              key: GOOGLE_MAPS_API_KEY,
+              language: 'en',
+            }}
+            onFail={error => console.log(error)}
+          />
+        </View>
+        <View style={{flex: 0.5, marginLeft: 5}}>
+          <GooglePlacesAutocomplete
+            fetchDetails={true}
+            placeholder="Destination"
+            onPress={(data, details = null) => {
+              // 'details' is provided when fetchDetails = true
+              console.log(JSON.stringify(details?.geometry?.location));
+              let destinationCoordinates = {
+                latitude: details?.geometry?.location.lat,
+                longitude: details?.geometry?.location.lng,
+              };
+              setDestination(destinationCoordinates);
+              moveToLocation(
+                // details?.geometry?.location.lat,
+                // details?.geometry?.location.lng,
+                destinationCoordinates,
+              );
+
+              console.log(data, details);
+            }}
+            query={{
+              key: GOOGLE_MAPS_API_KEY,
+              language: 'en',
+            }}
+            onFail={error => console.log(error)}
+          />
+        </View>
       </View>
       <MapView
         ref={mapRef}
@@ -79,6 +123,11 @@ const MapScreen = () => {
           latitudeDelta: 0.1,
           longitudeDelta: 0.1,
         }}>
+        {origin !== undefined ? <Marker coordinate={origin}></Marker> : null}
+        {destination !== undefined ? (
+          <Marker coordinate={destination}></Marker>
+        ) : null}
+
         {/* Single Marker */}
         {/* <Marker
           coordinate={{
@@ -89,7 +138,7 @@ const MapScreen = () => {
           description={'this is my home destination'}
         /> */}
         {/* Custom Marker View */}
-        <Marker
+        {/* <Marker
           coordinate={{
             latitude: 33.6088101224969,
             longitude: 73.16781057676766,
@@ -98,7 +147,7 @@ const MapScreen = () => {
           <Callout style={{width: 300, height: 300, backgroundColor: 'white'}}>
             <MyCustomCalloutView />
           </Callout>
-        </Marker>
+        </Marker> */}
         {/* Multiple Marker */}
         {markersList.map(marker => (
           <Marker
@@ -168,6 +217,15 @@ const MapScreen = () => {
             },
           ]}
         />
+        {origin != undefined && destination != undefined ? (
+          <MapViewDirections
+            origin={origin}
+            strokeColor="blue"
+            strokeWidth={2}
+            destination={destination}
+            apikey={GOOGLE_MAPS_API_KEY}
+          />
+        ) : null}
       </MapView>
     </View>
   );
