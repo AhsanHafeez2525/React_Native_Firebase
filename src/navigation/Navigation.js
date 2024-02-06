@@ -11,6 +11,7 @@ import DynamicScreenA from '../DynamicScreenA';
 import ProductDetail from '../ProductDetail';
 import ColorMode from '../ColorMode';
 import AnimatedPlaceholder from '../AnimatedPlaceholder';
+import PaymentScreen from '../PaymentScreen';
 
 const Navigation = () => {
   const Stack = createNativeStackNavigator();
@@ -71,6 +72,13 @@ const Navigation = () => {
           <Stack.Screen
             name="AnimatedPlaceholder"
             component={AnimatedPlaceholder}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="PaymentScreen"
+            component={PaymentScreen}
             options={{
               headerShown: false,
             }}
