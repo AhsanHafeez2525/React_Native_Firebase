@@ -4,8 +4,10 @@ const stripe = require('stripe')(
 
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const app = express();
 
+app.use(cors());
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
@@ -36,4 +38,4 @@ app.post('/payment-sheet', async (req, res) => {
   });
 });
 
-app.listen(3006, () => console.log('Running on http://localhost:3006'));
+app.listen(5001, () => console.log('Running on port'));

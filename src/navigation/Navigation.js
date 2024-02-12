@@ -12,6 +12,8 @@ import ProductDetail from '../ProductDetail';
 import ColorMode from '../ColorMode';
 import AnimatedPlaceholder from '../AnimatedPlaceholder';
 import PaymentScreen from '../PaymentScreen';
+import EasyTawlindScreen from '../EasyTawlindScreen';
+import SecondTawlindScreen from '../SecondTawlindScreen';
 
 const Navigation = () => {
   const Stack = createNativeStackNavigator();
@@ -79,6 +81,20 @@ const Navigation = () => {
           <Stack.Screen
             name="PaymentScreen"
             component={PaymentScreen}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="EasyTawlindScreen"
+            component={EasyTawlindScreen}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="SecondTawlindScreen"
+            component={SecondTawlindScreen}
             options={{
               headerShown: false,
             }}

@@ -419,6 +419,50 @@ const HomeScreen = ({navigation}) => {
             </Text>
           </TouchableOpacity>
         </View>
+
+        <View>
+          <TouchableOpacity
+            style={{
+              width: 250,
+              height: 45,
+              alignSelf: 'center',
+              backgroundColor: 'black',
+              borderRadius: 8,
+              marginTop: 20,
+            }}
+            onPress={() => navigation.navigate('EasyTawlindScreen')}>
+            <Text
+              style={{
+                textAlign: 'center',
+                paddingVertical: 11,
+                color: 'white',
+              }}>
+              Go to Easy Tawlind css
+            </Text>
+          </TouchableOpacity>
+        </View>
+
+        <View>
+          <TouchableOpacity
+            style={{
+              width: 250,
+              height: 45,
+              alignSelf: 'center',
+              backgroundColor: 'black',
+              borderRadius: 8,
+              marginTop: 20,
+            }}
+            onPress={() => navigation.navigate('SecondTawlindScreen')}>
+            <Text
+              style={{
+                textAlign: 'center',
+                paddingVertical: 11,
+                color: 'white',
+              }}>
+              Go to Second Tawlind css
+            </Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </ScrollView>
   );
