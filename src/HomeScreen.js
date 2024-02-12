@@ -474,7 +474,7 @@ const HomeScreen = ({navigation}) => {
               borderRadius: 8,
               marginTop: 20,
             }}
-            onPress={() => navigation.navigate('lottieScreen')}>
+            onPress={() => navigation.navigate('LottieScreen')}>
             <Text
               style={{
                 textAlign: 'center',

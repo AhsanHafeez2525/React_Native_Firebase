@@ -15,7 +15,8 @@ import PaymentScreen from '../PaymentScreen';
 import EasyTawlindScreen from '../EasyTawlindScreen';
 import SecondTawlindScreen from '../SecondTawlindScreen';
 import Payment from '../Payment';
-import lottieScreen from '../lottieScreen';
+import lottieScreen from '../LottieScreen';
+import LottieScreen from '../LottieScreen';
 
 const Navigation = () => {
   const Stack = createNativeStackNavigator();
@@ -109,8 +110,8 @@ const Navigation = () => {
             }}
           />
           <Stack.Screen
-            name="lottieScreen"
-            component={lottieScreen}
+            name="LottieScreen"
+            component={LottieScreen}
             options={{
               headerShown: false,
             }}
