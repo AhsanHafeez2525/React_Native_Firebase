@@ -14,6 +14,7 @@ import AnimatedPlaceholder from '../AnimatedPlaceholder';
 import PaymentScreen from '../PaymentScreen';
 import EasyTawlindScreen from '../EasyTawlindScreen';
 import SecondTawlindScreen from '../SecondTawlindScreen';
+import Payment from '../Payment';
 
 const Navigation = () => {
   const Stack = createNativeStackNavigator();
@@ -95,6 +96,13 @@ const Navigation = () => {
           <Stack.Screen
             name="SecondTawlindScreen"
             component={SecondTawlindScreen}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="Payment"
+            component={Payment}
             options={{
               headerShown: false,
             }}

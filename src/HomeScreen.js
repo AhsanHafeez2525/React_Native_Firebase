@@ -463,6 +463,28 @@ const HomeScreen = ({navigation}) => {
             </Text>
           </TouchableOpacity>
         </View>
+
+        <View>
+          <TouchableOpacity
+            style={{
+              width: 250,
+              height: 45,
+              alignSelf: 'center',
+              backgroundColor: 'black',
+              borderRadius: 8,
+              marginTop: 20,
+            }}
+            onPress={() => navigation.navigate('Payment')}>
+            <Text
+              style={{
+                textAlign: 'center',
+                paddingVertical: 11,
+                color: 'white',
+              }}>
+              Go to Payment
+            </Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </ScrollView>
   );
